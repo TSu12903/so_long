@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/14 16:12:24 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/14 18:13:36 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int parsing(char **av, t_init *init);
 ///				utils_parsing.c		///
 //////////////////////////////////////
 
-int ft_free_structure(t_init *init);
+int     ft_free_structure(t_init *init);
+void    ft_free(int i, char **str);
 
 #endif
