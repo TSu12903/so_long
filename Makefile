@@ -6,18 +6,21 @@
 #    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 10:12:04 by tcybak            #+#    #+#              #
-#    Updated: 2025/01/08 12:19:14 by tcybak           ###   ########.fr        #
+#    Updated: 2025/01/14 12:46:13 by tcybak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCDIR	:= ./mandatory
+SRCDIR	:= ./Mandatory
 OBJDIR := ./obj
 CC := cc
 CFLAGS := -Wall -Werror -Wextra -g
 NAME := so_long
 LIBFT := libft/libft.a
 LIB := libft
-SRC :=	parsing \
+SRC :=	parsing/parsing.c \
+		utils/utils_parsing.c \
+		main.c \
+		
 
 OBJ := $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
