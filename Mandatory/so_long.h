@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/14 12:54:28 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/14 16:12:24 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
+#include <fcntl.h>
 
 typedef struct s_init
 {
     int i;
     int j;
+    int verif;
     int parsing;
 
 }       t_init;
