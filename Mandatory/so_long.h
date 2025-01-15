@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 13:19:46 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/15 14:28:22 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_init
     int j;
     int verif;
     int parsing;
+    int size_map;
+    int error;
 
 }       t_init;
 
@@ -44,5 +46,6 @@ int parsing(char **av, t_init *init, t_tab *tab);
 int     ft_free_structure(t_init *init, t_tab *tab);
 void    ft_free(int i, char **str);
 int     ft_free_init(t_init *init);
+int	    ft_strlen_map(t_tab *tab);
 
 #endif

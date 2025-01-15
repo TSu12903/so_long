@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:14:34 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 13:19:35 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/15 14:32:57 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,14 @@ void    ft_free(int i, char **str)
 		i--;
 	}
 	free(str);
+}
+int	ft_strlen_map(t_tab *tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab->str[i])
+		i++;
+	i--;
+	return (i);
 }
