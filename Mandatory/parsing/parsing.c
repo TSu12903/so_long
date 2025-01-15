@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/14 18:33:11 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/15 11:15:05 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	parsing(char **av, t_init *init)
 		return (0);
 	fd = open(av[1], O_RDONLY);
 	final = ft_calloc(1, 1);
+	if (final == 0)
+		return (0);
 	gnl_result = get_next_line(fd);
 	while (gnl_result != 0)
 	{
