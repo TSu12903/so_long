@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 17:35:57 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 18:51:11 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/15 18:53:11 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_check(t_init *init, t_tab *tab)
 	init->i = 0;
 	init->j = 0;
 	init->k = 0;
-	while (init->i < init->size_map_vertical)
+	while (init->i < init->size_map_vertical + 1)
 	{
 		ft_check_rectangle(init, tab);
 		ft_check_wall(init, tab);
