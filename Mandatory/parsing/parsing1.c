@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 14:46:46 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/15 18:47:01 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_read_file_to_array(int fd,t_init *init, t_tab *tab)
 	char	*gnl_result;
 	char 	*tmp;
 
+	init->k = 0;
 	final = ft_calloc(1, 1);
 	if (final == 0)
 		return ;
@@ -42,34 +43,9 @@ void	ft_read_file_to_array(int fd,t_init *init, t_tab *tab)
 		gnl_result = get_next_line(fd);
 	}
 	tab->str = ft_split(final, '\n');
-	init->size_map = ft_strlen_map(tab);
+	init->size_map_vertical = ft_strlen_map_v(tab);
+	init->size_map_horizontal = ft_strlen_map_h(init->k, tab);
 	free(final);
-}
-void	ft_check(t_init *init, t_tab *tab)
-{
-	int	wall;
-	
-	wall = 0;
-	init->i = 0;
-	init->j = 0;
-	while (init->i < init->size_map)
-	{
-		if (init->i == 0 || init->i == init->size_map)
-		{
-			while (tab->str[init->i][init->j])
-			{
-				if (tab->str[init->i][init->j] != '1')
-				{
-					init->error = 0;
-					return ;
-				}
-				init->j++;
-			}
-		}
-		init->i++;
-	}
-	init->error = 1;
-	
 }
 
 int	parsing(char **av, t_init *init, t_tab *tab)
@@ -84,7 +60,7 @@ int	parsing(char **av, t_init *init, t_tab *tab)
 	ft_check(init, tab);
 	if (init->error == 0)
 	{
-		ft_free(init->size_map, tab->str);
+		ft_free(init->size_map_vertical, tab->str);
 		close(fd);
 		return (0);
 	}
@@ -94,7 +70,7 @@ int	parsing(char **av, t_init *init, t_tab *tab)
 		ft_printf("%s\n", tab->str[i]);
 		i++;
 	}
-	ft_free(init->size_map, tab->str);
+	ft_free(init->size_map_vertical, tab->str);
 	close(fd);
 	return (0);
 }

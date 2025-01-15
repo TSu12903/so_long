@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:27 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 13:19:55 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/15 18:44:55 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(int ac, char **av)
     tab = malloc(sizeof(t_tab));
 	if (tab == NULL)
 		return (ft_free_init(init));
+    ft_init(init);
     init->parsing = parsing(av, init, tab);
     if (init->parsing == 0)
         return ft_free_structure(init, tab);

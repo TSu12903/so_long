@@ -6,7 +6,7 @@
 #    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 10:12:04 by tcybak            #+#    #+#              #
-#    Updated: 2025/01/14 12:46:13 by tcybak           ###   ########.fr        #
+#    Updated: 2025/01/15 18:45:24 by tcybak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,10 @@ CFLAGS := -Wall -Werror -Wextra -g
 NAME := so_long
 LIBFT := libft/libft.a
 LIB := libft
-SRC :=	parsing/parsing.c \
+SRC :=	parsing/parsing1.c \
+		parsing/parsing2.c \
 		utils/utils_parsing.c \
+		init/init.c \
 		main.c \
 		
 

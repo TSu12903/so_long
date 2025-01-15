@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 14:28:22 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/15 18:46:44 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,32 @@ typedef struct s_init
 {
     int i;
     int j;
+    int k;
     int verif;
     int parsing;
-    int size_map;
+    int size_map_vertical;
+    int size_map_horizontal;
     int error;
 
 }       t_init;
 
 ////////////////////////////////////////
-///				parsing.c			///
+///				init.c			///
+//////////////////////////////////////
+
+void    ft_init(t_init *init);
+
+////////////////////////////////////////
+///				parsing1.c			///
 //////////////////////////////////////
 
 int parsing(char **av, t_init *init, t_tab *tab);
+
+////////////////////////////////////////
+///				parsing2.c			///
+//////////////////////////////////////
+
+void	ft_check(t_init *init, t_tab *tab);
 
 ////////////////////////////////////////
 ///				utils_parsing.c		///
@@ -46,6 +60,7 @@ int parsing(char **av, t_init *init, t_tab *tab);
 int     ft_free_structure(t_init *init, t_tab *tab);
 void    ft_free(int i, char **str);
 int     ft_free_init(t_init *init);
-int	    ft_strlen_map(t_tab *tab);
+int	    ft_strlen_map_v(t_tab *tab);
+int	    ft_strlen_map_h(int j, t_tab *tab);
 
 #endif
