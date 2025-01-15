@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 11:15:05 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/15 13:17:04 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,15 @@ int	verif_arg_ber(char  *av, t_init init)
 	return (ft_strncmp(&av[len - 4], ".ber", 5));
 }
 
-int	parsing(char **av, t_init *init)
+void	ft_read_file_to_array(int fd, t_tab *tab)
 {
-	int		fd;
 	char	*final;
 	char	*gnl_result;
 	char 	*tmp;
-	char	**str;
 
-	init->verif = verif_arg_ber(av[1] , *init);
-	if (init->verif != 0)
-		return (0);
-	fd = open(av[1], O_RDONLY);
 	final = ft_calloc(1, 1);
 	if (final == 0)
-		return (0);
+		return ;
 	gnl_result = get_next_line(fd);
 	while (gnl_result != 0)
 	{
@@ -48,15 +42,26 @@ int	parsing(char **av, t_init *init)
 		gnl_result = get_next_line(fd);
 		ft_printf("%s\n", final);
 	}
-	str = ft_split(final, '\n');
+	tab->str = ft_split(final, '\n');
 	free(final);
+}
+
+int	parsing(char **av, t_init *init, t_tab *tab)
+{
+	int		fd;
+
+	init->verif = verif_arg_ber(av[1] , *init);
+	if (init->verif != 0)
+		return (0);
+	fd = open(av[1], O_RDONLY);
+	ft_read_file_to_array(fd, tab);
 	int	i = 0;
-	while (str[i])
+	while (tab->str[i])
 	{
-		ft_printf("%s\n", str[i]);
+		ft_printf("%s\n", tab->str[i]);
 		i++;
 	}
-	ft_free(i, str);
+	ft_free(i, tab->str);
 	close(fd);
 	return (0);
 }

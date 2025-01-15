@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/14 18:13:36 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/15 13:19:46 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include "../libft/libft.h"
 #include <fcntl.h>
+
+typedef struct s_tab
+{
+    char	**str;
+
+}           t_tab;
 
 typedef struct s_init
 {
@@ -29,13 +35,14 @@ typedef struct s_init
 ///				parsing.c			///
 //////////////////////////////////////
 
-int parsing(char **av, t_init *init);
+int parsing(char **av, t_init *init, t_tab *tab);
 
 ////////////////////////////////////////
 ///				utils_parsing.c		///
 //////////////////////////////////////
 
-int     ft_free_structure(t_init *init);
+int     ft_free_structure(t_init *init, t_tab *tab);
 void    ft_free(int i, char **str);
+int     ft_free_init(t_init *init);
 
 #endif
