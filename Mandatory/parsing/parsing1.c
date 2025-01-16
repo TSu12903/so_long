@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 18:16:48 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 18:21:40 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ int	parsing(char **av, t_init *init, t_point *start)
 	ft_free(init->size_map_vertical, init->str);
 	init->fd = open(av[1], O_RDONLY);
 	ft_read_file_to_array(init->fd, init);
-	return (0);
+	return (1);
 }
 
