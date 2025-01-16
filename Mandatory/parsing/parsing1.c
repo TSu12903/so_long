@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 18:10:02 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 18:11:12 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,9 @@ int	parsing(char **av, t_init *init, t_point *start)
 		close(init->fd);
 		return (0);
 	}
-	int	i = 0;
-	while (init->str[i])
-	{
-		ft_printf("%s\n", init->str[i]);
-		i++;
-	}
-	ft_printf("\n");
 	ft_free(init->size_map_vertical, init->str);
 	init->fd = open(av[1], O_RDONLY);
 	ft_read_file_to_array(init->fd, init);
-	i = 0;
-	while (init->str[i])
-	{
-		ft_printf("%s\n", init->str[i]);
-		i++;
-	}
 	return (0);
 }
 
