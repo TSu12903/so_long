@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:45:09 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 11:36:21 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 14:08:56 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void    ft_init(t_init *init)
 {
-    init->error = 1;
-    init->exit = 0;
-    init->item = 0;
-    init->start = 0;
+	init->error = 1;
+	init->exit = 0;
+	init->item = 0;
+	init->start = 0;
 }

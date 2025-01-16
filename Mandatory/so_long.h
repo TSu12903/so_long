@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 11:35:41 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 17:59:23 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,28 @@
 # include "../libft/libft.h"
 #include <fcntl.h>
 
-typedef struct s_tab
+typedef struct s_point
 {
-    char	**str;
+	int y;
+	int x;
 
-}           t_tab;
+}		t_point;
 
 typedef struct s_init
 {
-    int i;
-    int j;
-    int k;
-    int exit;
-    int item;
-    int start;
-    int verif;
-    int parsing;
-    int size_map_vertical;
-    int size_map_horizontal;
-    int error;
+	int i;
+	int j;
+	int k;
+	int	fd;
+	int exit;
+	int item;
+	int start;
+	int verif;
+	int parsing;
+	int size_map_vertical;
+	int size_map_horizontal;
+	int error;
+	char	**str;
 
 }       t_init;
 
@@ -48,22 +51,27 @@ void    ft_init(t_init *init);
 ///				parsing1.c			///
 //////////////////////////////////////
 
-int parsing(char **av, t_init *init, t_tab *tab);
+int parsing(char **av, t_init *init, t_point *start);
 
 ////////////////////////////////////////
-///				parsing2.c			///
+///				parsing_check.c		///
 //////////////////////////////////////
 
-void	ft_check(t_init *init, t_tab *tab);
+void	ft_check(t_init *init, t_point *start);
+
+////////////////////////////////////////
+///				parsing_item.c		///
+//////////////////////////////////////
+
+void    ft_check_items_acces(t_init *init, t_point *start);
 
 ////////////////////////////////////////
 ///				utils_parsing.c		///
 //////////////////////////////////////
 
-int     ft_free_structure(t_init *init, t_tab *tab);
+int     ft_free_structure(t_init *init);
 void    ft_free(int i, char **str);
-int     ft_free_init(t_init *init);
-int	    ft_strlen_map_v(t_tab *tab);
-int	    ft_strlen_map_h(int j, t_tab *tab);
+int	    ft_strlen_map_v(t_init *init);
+int	    ft_strlen_map_h(int j, t_init *init);
 
 #endif

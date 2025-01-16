@@ -6,20 +6,13 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:14:34 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 18:17:33 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 14:15:44 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int ft_free_structure(t_init *init, t_tab *tab)
-{
-	free(init);
-	free(tab);
-	return (0);
-}
-
-int ft_free_init(t_init *init)
+int ft_free_structure(t_init *init)
 {
 	free(init);
 	return (0);
@@ -35,7 +28,7 @@ void    ft_free(int i, char **str)
 	free(str);
 }
 
-int	ft_strlen_map_v(t_tab *tab)
+int	ft_strlen_map_v(t_init *tab)
 {
 	int	i;
 
@@ -46,7 +39,7 @@ int	ft_strlen_map_v(t_tab *tab)
 	return (i);
 }
 
-int	ft_strlen_map_h(int j, t_tab *tab)
+int	ft_strlen_map_h(int j, t_init *tab)
 {
 	int	i;
 

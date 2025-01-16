@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing2.c                                         :+:      :+:    :+:   */
+/*   parsing_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 17:35:57 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 11:46:50 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 17:53:33 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void    ft_check_wall(t_init *init, t_tab *tab)
+void    ft_check_wall(t_init *init)
 {
 	if (init->i == 0 || init->i == init->size_map_vertical)
 	{
 		init->j = 0;
-		while (tab->str[init->i][init->j])
+		while (init->str[init->i][init->j])
 		{
-			if (tab->str[init->i][init->j] != '1')
+			if (init->str[init->i][init->j] != '1')
 			{
 				init->error = 0;
 				return ;
@@ -29,7 +29,7 @@ void    ft_check_wall(t_init *init, t_tab *tab)
 	}
 	else 
 	{
-		if (tab->str[init->i][0] != '1' || tab->str[init->i][init->size_map_horizontal] != '1')
+		if (init->str[init->i][0] != '1' || init->str[init->i][init->size_map_horizontal] != '1')
 		{
 			init->error = 0;
 			return ;
@@ -37,9 +37,9 @@ void    ft_check_wall(t_init *init, t_tab *tab)
 	}
 }
 
-void	ft_check_rectangle(t_init *init, t_tab *tab)
+void	ft_check_rectangle(t_init *init)
 {
-	init->verif = ft_strlen_map_h(init->k, tab);
+	init->verif = ft_strlen_map_h(init->k, init);
 	if (init->size_map_horizontal != init->verif)
 	{
 		init->error = 0;
@@ -48,22 +48,26 @@ void	ft_check_rectangle(t_init *init, t_tab *tab)
 	init->k++;
 }
 
-void	ft_check_consumable(t_init *init, t_tab *tab)
+void	ft_check_consumable(t_init *init, t_point *start)
 {
 	init->j = 0;
-	while (tab->str[init->i][init->j])
+	while (init->str[init->i][init->j])
 	{
-		if (tab->str[init->i][init->j] == 'E')
+		if (init->str[init->i][init->j] == 'E')
 			init->exit++;
-		if (tab->str[init->i][init->j] == 'P')
+		if (init->str[init->i][init->j] == 'P')
+		{
+			start->y = init->i;
+			start->x = init->j;
 			init->start++;
-		if (tab->str[init->i][init->j] == 'C')
+		}
+		if (init->str[init->i][init->j] == 'C')
 			init->item++;
 		init->j++;
 	}
 }
 
-void	ft_check(t_init *init, t_tab *tab)
+void	ft_check(t_init *init, t_point *start)
 {
 	int	wall;
 	
@@ -73,9 +77,9 @@ void	ft_check(t_init *init, t_tab *tab)
 	init->k = 0;
 	while (init->i < init->size_map_vertical + 1)
 	{
-		ft_check_rectangle(init, tab);
-		ft_check_wall(init, tab);
-		ft_check_consumable(init, tab);
+		ft_check_rectangle(init);
+		ft_check_wall(init);
+		ft_check_consumable(init, start);
 		if (init->error == 0)
 			return ;
 		init->i++;
@@ -85,5 +89,4 @@ void	ft_check(t_init *init, t_tab *tab)
 		init->error = 0;
 		return ;
 	}
-	init->error = 1;
 }

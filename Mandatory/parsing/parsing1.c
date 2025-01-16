@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 11:46:41 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 18:10:02 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	verif_arg_ber(char  *av, t_init init)
 	return (ft_strncmp(&av[len - 4], ".ber", 5));
 }
 
-void	ft_read_file_to_array(int fd,t_init *init, t_tab *tab)
+void	ft_read_file_to_array(int fd,t_init *init)
 {
 	char	*final;
 	char	*gnl_result;
@@ -42,36 +42,44 @@ void	ft_read_file_to_array(int fd,t_init *init, t_tab *tab)
 		final = tmp; // tmp et str1 meme adresse
 		gnl_result = get_next_line(fd);
 	}
-	tab->str = ft_split(final, '\n');
-	init->size_map_vertical = ft_strlen_map_v(tab);
-	init->size_map_horizontal = ft_strlen_map_h(init->k, tab);
+	init->str = ft_split(final, '\n');
+	init->size_map_vertical = ft_strlen_map_v(init);
+	init->size_map_horizontal = ft_strlen_map_h(init->k, init);
 	free(final);
 }
 
-int	parsing(char **av, t_init *init, t_tab *tab)
+int	parsing(char **av, t_init *init, t_point *start)
 {
-	int		fd;
-
 	init->verif = verif_arg_ber(av[1] , *init);
 	if (init->verif != 0)
 		return (0);
-	fd = open(av[1], O_RDONLY);
-	ft_read_file_to_array(fd, init, tab);
-	ft_check(init, tab);
+	init->fd = open(av[1], O_RDONLY);
+	ft_read_file_to_array(init->fd, init);
+	ft_check(init, start);
+	ft_check_items_acces(init, start);
 	if (init->error == 0)
 	{
 		write(2, "Error\n", 6);
-		ft_free(init->size_map_vertical, tab->str);
-		close(fd);
+		ft_free(init->size_map_vertical, init->str);
+		close(init->fd);
 		return (0);
 	}
 	int	i = 0;
-	while (tab->str[i])
+	while (init->str[i])
 	{
-		ft_printf("%s\n", tab->str[i]);
+		ft_printf("%s\n", init->str[i]);
 		i++;
 	}
-	ft_free(init->size_map_vertical, tab->str);
-	close(fd);
+	ft_printf("\n");
+	ft_free(init->size_map_vertical, init->str);
+	init->fd = open(av[1], O_RDONLY);
+	ft_read_file_to_array(init->fd, init);
+	i = 0;
+	while (init->str[i])
+	{
+		ft_printf("%s\n", init->str[i]);
+		i++;
+	}
 	return (0);
 }
+
