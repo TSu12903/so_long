@@ -6,13 +6,13 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 17:35:57 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 17:53:33 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 18:53:24 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void    ft_check_wall(t_init *init)
+void	ft_check_wall(t_init *init)
 {
 	if (init->i == 0 || init->i == init->size_map_vertical)
 	{
@@ -27,9 +27,10 @@ void    ft_check_wall(t_init *init)
 			init->j++;
 		}
 	}
-	else 
+	else
 	{
-		if (init->str[init->i][0] != '1' || init->str[init->i][init->size_map_horizontal] != '1')
+		if (init->str[init->i][0] != '1'
+			|| init->str[init->i][init->size_map_horizontal] != '1')
 		{
 			init->error = 0;
 			return ;
@@ -63,6 +64,16 @@ void	ft_check_consumable(t_init *init, t_point *start)
 		}
 		if (init->str[init->i][init->j] == 'C')
 			init->item++;
+		if (init->str[init->i][init->j] != 'C'
+		&& init->str[init->i][init->j] != 'P'
+			&& init->str[init->i][init->j] != 'E'
+				&& init->str[init->i][init->j] != '1'
+					&& init->str[init->i][init->j] != '0')
+		{
+			ft_printf("WHAT %d \n", init->str[init->i][init->j]);
+			init->error = 0;
+			return ;
+		}
 		init->j++;
 	}
 }
@@ -70,7 +81,7 @@ void	ft_check_consumable(t_init *init, t_point *start)
 void	ft_check(t_init *init, t_point *start)
 {
 	int	wall;
-	
+
 	wall = 0;
 	init->i = 0;
 	init->j = 0;
