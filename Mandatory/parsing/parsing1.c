@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 18:47:01 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 11:46:41 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	parsing(char **av, t_init *init, t_tab *tab)
 	ft_check(init, tab);
 	if (init->error == 0)
 	{
+		write(2, "Error\n", 6);
 		ft_free(init->size_map_vertical, tab->str);
 		close(fd);
 		return (0);

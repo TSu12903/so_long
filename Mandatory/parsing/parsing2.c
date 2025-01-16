@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 17:35:57 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 18:53:11 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 11:46:50 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,21 @@ void	ft_check_rectangle(t_init *init, t_tab *tab)
 	init->k++;
 }
 
+void	ft_check_consumable(t_init *init, t_tab *tab)
+{
+	init->j = 0;
+	while (tab->str[init->i][init->j])
+	{
+		if (tab->str[init->i][init->j] == 'E')
+			init->exit++;
+		if (tab->str[init->i][init->j] == 'P')
+			init->start++;
+		if (tab->str[init->i][init->j] == 'C')
+			init->item++;
+		init->j++;
+	}
+}
+
 void	ft_check(t_init *init, t_tab *tab)
 {
 	int	wall;
@@ -60,9 +75,15 @@ void	ft_check(t_init *init, t_tab *tab)
 	{
 		ft_check_rectangle(init, tab);
 		ft_check_wall(init, tab);
+		ft_check_consumable(init, tab);
 		if (init->error == 0)
 			return ;
 		init->i++;
+	}
+	if (init->exit != 1 || init->start != 1 || init->item < 1)
+	{
+		init->error = 0;
+		return ;
 	}
 	init->error = 1;
 }

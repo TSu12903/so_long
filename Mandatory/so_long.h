@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/15 18:46:44 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/16 11:35:41 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ typedef struct s_init
     int i;
     int j;
     int k;
+    int exit;
+    int item;
+    int start;
     int verif;
     int parsing;
     int size_map_vertical;
