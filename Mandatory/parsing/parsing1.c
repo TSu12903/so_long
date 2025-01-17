@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 18:47:54 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/17 12:23:18 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,45 @@ void	ft_read_file_to_array(int fd, t_init *init)
 	close(init->fd);
 }
 
+void	ft_verif_empty_map(char **av, t_init *init)
+{
+	char	*gnl_result;
+
+	init->fd = open(av[1], O_RDONLY);
+	gnl_result = get_next_line(init->fd);
+	if (gnl_result == 0)
+	{
+		free(gnl_result);
+		init->error = 0;
+		close(init->fd);
+		return ;
+	}
+	while (gnl_result != 0)
+	{
+		free(gnl_result);
+		gnl_result = get_next_line(init->fd);
+	}
+	free(gnl_result);
+	close(init->fd);
+	return ;
+}
+
 int	parsing(char **av, t_init *init, t_point *start)
 {
 	init->verif = verif_arg_ber(av[1], *init);
-	if (init->verif != 0)
+	ft_verif_empty_map(av, init);
+	if (init->verif != 0 || init->error == 0)
+	{
+		write(2, "Error file \n", 12);
 		return (0);
+	}
 	init->fd = open(av[1], O_RDONLY);
 	ft_read_file_to_array(init->fd, init);
 	ft_check(init, start);
 	ft_check_items_acces(init, start);
 	if (init->error == 0)
 	{
-		write(2, "Error\n", 6);
+		write(2, "Error map \n", 10);
 		ft_free(init->size_map_vertical, init->str);
 		return (0);
 	}

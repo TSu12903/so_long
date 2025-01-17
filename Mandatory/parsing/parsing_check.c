@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 17:35:57 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 18:53:24 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/17 12:23:32 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	ft_check_consumable(t_init *init, t_point *start)
 				&& init->str[init->i][init->j] != '1'
 					&& init->str[init->i][init->j] != '0')
 		{
-			ft_printf("WHAT %d \n", init->str[init->i][init->j]);
 			init->error = 0;
 			return ;
 		}
