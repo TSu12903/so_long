@@ -1,54 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parsing.c                                    :+:      :+:    :+:   */
+/*   get_window.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 12:14:34 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/20 17:46:04 by tcybak           ###   ########.fr       */
+/*   Created: 2025/01/20 14:01:45 by tcybak            #+#    #+#             */
+/*   Updated: 2025/01/20 17:44:19 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int ft_free_structure(t_init *init)
+int	ft_close(t_init *init)
 {
-	if (init->mlx)
-		free(init->mlx);
-	if (init)
-		free(init);
+	mlx_loop_end(init->mlx);
+	// mlx_clear_window(init->mlx, init->mlx_win);
 	return (0);
 }
-
-void    ft_free(int i, char **str)
+	
+void   start_window(t_init *init)
 {
-	while(i  + 1 > 0 )
-	{
-		free(str[i]);
-		i--;
-	}
-	free(str);
-}
-
-int	ft_strlen_map_v(t_init *tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab->str[i])
-		i++;
-	i--;
-	return (i);
-}
-
-int	ft_strlen_map_h(int j, t_init *tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab->str[j][i])
-		i++;
-	i--;
-	return (i);
+	init->mlx = mlx_init();
+	if (!init->mlx)
+		return ;
+	init->mlx_win = mlx_new_window(init->mlx, 1920, 1080, "Hello");
+	if (!init->mlx_win)
+		return ;
 }

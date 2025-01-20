@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/17 16:43:55 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/20 17:44:17 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,18 @@ typedef struct s_init
 	int error;
 	char	**str;
 
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+
 }       t_init;
 
 ////////////////////////////////////////
-///				init.c			///
+///				init.c				///
 //////////////////////////////////////
 
 void    ft_init(t_init *init);
@@ -74,5 +82,12 @@ int     ft_free_structure(t_init *init);
 void    ft_free(int i, char **str);
 int	    ft_strlen_map_v(t_init *init);
 int	    ft_strlen_map_h(int j, t_init *init);
+
+////////////////////////////////////////
+///				get_window.c		///
+//////////////////////////////////////
+
+void	start_window(t_init *init);
+int		ft_close(t_init *init);
 
 #endif
