@@ -15,16 +15,17 @@ OBJDIR  := ./obj
 CC      := cc
 CFLAGS  := -Wall -Werror -Wextra -g -I$(MLXDIR) -Ilibft
 NAME    := so_long
-LIBFT   := libft/libft.a
-LIB     := libft
+LIBFT   := Library/libft/libft.a
+LIB     := Library/libft
 SRC     := parsing/parsing1.c \
            parsing/parsing_check.c \
            parsing/parsing_item.c \
+           windows/get_window.c \
            utils/utils_parsing.c \
            init/init.c \
            main.c \
 
-MLXDIR  := minilibx-linux
+MLXDIR  := Library/minilibx-linux
 MLX     := $(MLXDIR)/libmlx_Linux.a
 OBJ     := $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 LIBMLX  := -L$(MLXDIR) -lmlx_Linux -lXext -lX11 -lm -lz
@@ -33,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LIBMLX) -o $(NAME)
-	@echo ✔ Compilation réussie
+	@echo ✔ GOOD
 
 $(LIBFT):
 	@$(MAKE) -C $(LIB) -s

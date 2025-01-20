@@ -13,9 +13,9 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../libft/libft.h"
+# include "../Library/libft/libft.h"
 #include <fcntl.h>
-#include "../minilibx-linux/mlx.h"
+#include "../Library/minilibx-linux/mlx.h"
 
 typedef struct s_point
 {
