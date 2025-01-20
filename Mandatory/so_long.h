@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/16 17:59:23 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/17 16:43:55 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 #include <fcntl.h>
+#include "../minilibx-linux/mlx.h"
 
 typedef struct s_point
 {
