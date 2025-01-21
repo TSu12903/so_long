@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/20 17:44:17 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/21 18:47:59 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_init
 	int i;
 	int j;
 	int k;
+	int	pixel_hor;
+	int	pixel_ver;
 	int	fd;
 	int exit;
 	int item;
@@ -42,11 +44,9 @@ typedef struct s_init
 
 	void	*mlx;
 	void	*mlx_win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	int		img_width;
+	int		img_height;
+	void	*img_wall_top;
 
 }       t_init;
 
@@ -79,6 +79,7 @@ void    ft_check_items_acces(t_init *init, t_point *start);
 //////////////////////////////////////
 
 int     ft_free_structure(t_init *init);
+int		ft_free_structure_windows(t_init *init);
 void    ft_free(int i, char **str);
 int	    ft_strlen_map_v(t_init *init);
 int	    ft_strlen_map_h(int j, t_init *init);
@@ -89,5 +90,11 @@ int	    ft_strlen_map_h(int j, t_init *init);
 
 void	start_window(t_init *init);
 int		ft_close(t_init *init);
+
+////////////////////////////////////////
+///				mlx_destroy.c		///
+//////////////////////////////////////
+
+void    ft_destroy(t_init *init);
 
 #endif

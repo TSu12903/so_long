@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:27 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/20 17:44:28 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/21 18:49:52 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ int main(int ac, char **av)
 	if (init->parsing == 0)
 		return (ft_free_structure(init));
 	start_window(init);
-	mlx_hook(init->mlx_win, 17, 1L<<0, ft_close, init);
-	mlx_loop(init->mlx);
-	mlx_destroy_window(init->mlx,init->mlx_win);
-	mlx_destroy_display(init->mlx);
+	ft_destroy(init);
 	ft_free(init->size_map_vertical, init->str);
-	ft_free_structure(init);
+	ft_free_structure_windows(init);
 	return (0);
 }
