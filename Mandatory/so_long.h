@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/22 17:00:39 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/22 17:59:59 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ void    ft_destroy(t_init *init);
 ///				mlx_destroy.c		///
 //////////////////////////////////////
 
-void	ft_draw_wall(t_init *init);
-void	ft_draw_key(t_init *init);
-void	ft_draw_prisoner(t_init *init);
+void	ft_draw(t_init *init);
 
 #endif
