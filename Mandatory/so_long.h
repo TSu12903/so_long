@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/21 18:47:59 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/22 17:00:39 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ typedef struct s_init
 	int		img_width;
 	int		img_height;
 	void	*img_wall_top;
+	void	*img_wall_ground;
+	void	*img_wall_key;
+	void	*img_wall_prisoner;
+	void	*img_wall_door;
 
 }       t_init;
 
@@ -96,5 +100,13 @@ int		ft_close(t_init *init);
 //////////////////////////////////////
 
 void    ft_destroy(t_init *init);
+
+////////////////////////////////////////
+///				mlx_destroy.c		///
+//////////////////////////////////////
+
+void	ft_draw_wall(t_init *init);
+void	ft_draw_key(t_init *init);
+void	ft_draw_prisoner(t_init *init);
 
 #endif

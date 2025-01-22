@@ -6,7 +6,7 @@
 #    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 10:12:04 by tcybak            #+#    #+#              #
-#    Updated: 2025/01/21 18:50:00 by tcybak           ###   ########.fr        #
+#    Updated: 2025/01/22 15:26:42 by tcybak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC     := parsing/parsing1.c \
            parsing/parsing_item.c \
            windows/get_window.c \
 		   windows/mlx_destroy.c \
+		   windows/picture_map.c \
            utils/utils_parsing.c \
            init/init.c \
            main.c \
