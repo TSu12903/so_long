@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:01:45 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/22 18:04:24 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/23 11:53:09 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_close(t_init *init)
 	return (0);
 }
 
-void ft_load_images(t_init *init)
+int ft_load_images(t_init *init)
 {
     init->img_wall_top = mlx_xpm_file_to_image(init->mlx, "picture/wall1.xpm", &init->img_width, &init->img_height);
     init->img_wall_ground = mlx_xpm_file_to_image(init->mlx, "picture/ground.xpm", &init->img_width, &init->img_height);
@@ -30,8 +30,9 @@ void ft_load_images(t_init *init)
         !init->img_wall_prisoner || !init->img_wall_door)
     {
         ft_destroy(init);
-        exit(EXIT_FAILURE);
+        return (0);
     }
+	return (1);
 }
 
 void	ft_draw_map(t_init *init)
@@ -65,6 +66,9 @@ void   start_window(t_init *init)
 	init->mlx_win = mlx_new_window(init->mlx, 1080, 1080, "Freedom Quest");
 	if (!init->mlx_win)
 		return ;
-	ft_load_images(init);
+	init->error = ft_load_images(init);
+	ft_printf("%d \n", init->error);
+	if (init->error == 0)
+		return ;
 	ft_draw_map(init);
 }
