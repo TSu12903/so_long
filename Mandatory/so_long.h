@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/23 12:18:47 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/23 18:00:46 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ typedef struct s_init
 	int size_map_horizontal;
 	int error;
 	char	**str;
+	int player_x;
+	int	player_y;
+	int	count_item;
 
 	void	*mlx;
 	void	*mlx_win;
@@ -95,6 +98,7 @@ int	    ft_strlen_map_h(int j, t_init *init);
 
 void	start_window(t_init *init);
 int		ft_close(t_init *init);
+void	ft_draw_map(t_init *init);
 
 ////////////////////////////////////////
 ///				mlx_destroy.c		///
@@ -103,9 +107,10 @@ int		ft_close(t_init *init);
 void    ft_destroy(t_init *init);
 
 ////////////////////////////////////////
-///				mlx_destroy.c		///
+///				mlx_Map.c			///
 //////////////////////////////////////
 
 void	ft_draw(t_init *init);
+int		ft_move(int keycode, t_init *init);
 
 #endif

@@ -82,7 +82,7 @@ int	mlx_get_color_value(void *mlx_ptr, int color);
 */
 
 int	mlx_mouse_hook (void *win_ptr, int (*funct_ptr)(), void *param); // important souris
-int	mlx_key_hook (void *win_ptr, int (*funct_ptr)(), void *param); // important clavier peut etre 
+int	mlx_key_hook (void *win_ptr, int (*funct_ptr)(), void *param); // pour param keycode ou 'ascii' important clavier peut etre 
 int	mlx_expose_hook (void *win_ptr, int (*funct_ptr)(), void *param);
 
 int	mlx_loop_hook (void *mlx_ptr, int (*funct_ptr)(), void *param);

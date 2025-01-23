@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:01:45 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/23 12:26:45 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/23 16:35:49 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_load_images(t_init *init)
     if (!init->img_wall_top || !init->img_wall_ground || !init->img_wall_key || 
         !init->img_wall_prisoner || !init->img_wall_door)
     {
+		write(2, "Sprite Error", 12);
         ft_destroy(init);
         exit (1);
     }
@@ -67,4 +68,6 @@ void   start_window(t_init *init)
 	ft_init_picture(init);
 	ft_load_images(init);
 	ft_draw_map(init);
+	mlx_hook(init->mlx_win, 2, 1L<<0 , ft_move, init);
+	
 }
