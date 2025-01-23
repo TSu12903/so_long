@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:45:09 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/23 18:01:56 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/23 19:06:32 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void    ft_init(t_init *init)
 	init->exit = 0;
 	init->item = 0;
 	init->start = 0;
-	init->count_item = 0;
 }
 void	ft_init_picture(t_init *init)
 {

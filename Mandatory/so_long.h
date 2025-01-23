@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/23 18:00:46 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/23 19:06:08 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ typedef struct s_init
 	char	**str;
 	int player_x;
 	int	player_y;
-	int	count_item;
+	int	exit_y;
+	int	exit_x;
 
 	void	*mlx;
 	void	*mlx_win;
