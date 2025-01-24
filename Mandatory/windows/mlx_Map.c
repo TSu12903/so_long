@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:16:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 15:36:09 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 16:09:43 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	ft_finish(t_init *init)
 		init->item--;
 	if (init->str[init->i][init->j] == 'E' && init->item == 0)
 	{
-		free(init->str_count);
 		ft_destroy(init);
 		exit(0);
 	}
@@ -119,11 +118,11 @@ int	ft_move(int keycode, t_init *init)
 		ft_destroy(init);
 		exit(0);
 	}
-	init->str_count = ft_itoa(init->count_move);
 	ft_move_top_low(keycode, init);
 	ft_move_side(keycode, init);
 	mlx_clear_window(init->mlx, init->mlx_win);
 	ft_draw_map(init);
+	init->str_count = ft_itoa(init->count_move);
 	mlx_string_put(init->mlx, init->mlx_win, 10, 10, 0xFFFFFF, "Count move :");
 	mlx_string_put(init->mlx, init->mlx_win, 100, 10,
 		0xFFFFFF, init->str_count);

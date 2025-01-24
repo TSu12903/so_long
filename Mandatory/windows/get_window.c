@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:01:45 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 15:30:15 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 16:06:37 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,5 @@ void	start_window(t_init *init)
 	ft_init_picture(init);
 	ft_load_images(init);
 	ft_draw_map(init);
-	mlx_string_put(init->mlx, init->mlx_win, 10, 10, 0xFFFFFF, "Count move :");
 	mlx_hook(init->mlx_win, 2, 1L << 0, ft_move, init);
 }
