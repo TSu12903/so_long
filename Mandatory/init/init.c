@@ -6,13 +6,13 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:45:09 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 14:14:22 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:37:58 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void    ft_init(t_init *init)
+void	ft_init(t_init *init)
 {
 	init->error = 1;
 	init->exit = 0;
@@ -20,6 +20,7 @@ void    ft_init(t_init *init)
 	init->start = 0;
 	init->count_move = 0;
 }
+
 void	ft_init_picture(t_init *init)
 {
 	init->img_wall_top = NULL;

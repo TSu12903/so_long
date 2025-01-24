@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 15:25:18 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:43:47 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include "../Library/libft/libft.h"
-#include <fcntl.h>
-#include "../Library/minilibx-linux/mlx.h"
+# include "../Library/minilibx-linux/mlx.h"
+# include <fcntl.h>
 
 typedef struct s_point
 {
@@ -24,7 +24,7 @@ typedef struct s_point
 
 }		t_point;
 
-typedef	struct	s_init
+typedef struct s_init
 {
 	int		i;
 	int		j;
