@@ -6,15 +6,15 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:41:25 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 14:40:37 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:31:47 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void    ft_destroy(t_init *init)
+void	ft_destroy(t_init *init)
 {
-	mlx_destroy_window(init->mlx,init->mlx_win);
+	mlx_destroy_window(init->mlx, init->mlx_win);
 	if (init->img_wall_top)
 		mlx_destroy_image(init->mlx, init->img_wall_top);
 	if (init->img_wall_ground)
