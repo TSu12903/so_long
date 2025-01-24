@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:16:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/23 19:08:15 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 14:49:13 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	ft_finish(t_init *init)
 		ft_destroy(init);
 		exit(0);
 	}
+	init->count_move++;
+	ft_printf("Count move : %d\n", init->count_move);
 }
 
 void	ft_move_top_low(int keycode,t_init *init)
@@ -73,16 +75,8 @@ void	ft_move_top_low(int keycode,t_init *init)
 	}
 }
 
-int	ft_move(int keycode, t_init *init)
+void	ft_move_side(int keycode,t_init *init)
 {
-	init->i = init->player_y;
-	init->j = init->player_x;
-	if (keycode == 65307)
-	{
-		ft_destroy(init);
-        exit(0);
-    }
-	ft_move_top_low(keycode, init);
 	if (keycode == 97) //a
 	{
 		if (init->str[init->i][init->j - 1] != '1')
@@ -107,7 +101,24 @@ int	ft_move(int keycode, t_init *init)
 			init->str[init->i][init->j] = 'P';
 		}
 	}
+}
+
+int	ft_move(int keycode, t_init *init)
+{
+	init->i = init->player_y;
+	init->j = init->player_x;
+	if (keycode == 65307)
+	{
+		ft_destroy(init);
+        exit(0);
+    }
+	init->str_count = ft_itoa(init->count_move);
+	ft_move_top_low(keycode, init);
+	ft_move_side(keycode, init);
 	mlx_clear_window(init->mlx, init->mlx_win);
 	ft_draw_map(init);
+	mlx_string_put(init->mlx, init->mlx_win, 10, 10, 0xFFFFFF, "Count move :");
+	mlx_string_put(init->mlx, init->mlx_win, 100, 10, 0xFFFFFF, init->str_count);
+	free(init->str_count);
 	return (1);
 }

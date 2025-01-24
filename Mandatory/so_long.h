@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/23 19:06:08 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 14:39:10 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,27 @@ typedef struct s_point
 
 typedef struct s_init
 {
-	int i;
-	int j;
-	int k;
-	int	pixel_hor;
-	int	pixel_ver;
-	int	fd;
-	int exit;
-	int item;
-	int start;
-	int verif;
-	int parsing;
-	int size_map_vertical;
-	int size_map_horizontal;
-	int error;
+	int		i;
+	int		j;
+	int		k;
+	int		pixel_hor;
+	int		pixel_ver;
+	int		fd;
+	int		exit;
+	int		item;
+	int		start;
+	int		verif;
+	int		parsing;
+	int		size_map_vertical;
+	int		size_map_horizontal;
+	int		error;
 	char	**str;
-	int player_x;
-	int	player_y;
-	int	exit_y;
-	int	exit_x;
+	int		player_x;
+	int		player_y;
+	int		exit_y;
+	int		exit_x;
+	int		count_move;
+	char	*str_count;
 
 	void	*mlx;
 	void	*mlx_win;
@@ -56,7 +58,7 @@ typedef struct s_init
 	void	*img_wall_prisoner;
 	void	*img_wall_door;
 
-}       t_init;
+}		     t_init;
 
 ////////////////////////////////////////
 ///				init.c				///
