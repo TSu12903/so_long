@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/23 14:36:34 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 13:31:33 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	parsing(char **av, t_init *init, t_point *start)
 	ft_read_file_to_array(init->fd, init);
 	ft_check(init, start);
 	ft_check_items_acces(init, start);
+	if (init->size_map_vertical + 1 > 60 || init->size_map_horizontal > 60)
+		init->error = 0;
 	if (init->error == 0)
 	{
 		write(2, "Map Error  \n", 10);

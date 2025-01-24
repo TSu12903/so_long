@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:01:45 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/23 16:35:49 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 11:49:01 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ void	ft_draw_map(t_init *init)
 
 void   start_window(t_init *init)
 {
-	init->img_width = 40;
-	init->img_height = 40;
+	init->img_width = 40 * (init->size_map_horizontal + 1);
+	init->img_height = 40 * (init->size_map_vertical + 1);
+	ft_printf("horizontale = %d", init->size_map_horizontal);
+	ft_printf("vertical = %d", init->size_map_vertical);
 	init->mlx = mlx_init();
 	if (!init->mlx)
 		return ;
-	init->mlx_win = mlx_new_window(init->mlx, 1080, 1080, "Freedom Quest");
+	init->mlx_win = mlx_new_window(init->mlx, init->img_width, init->img_height, "Freedom Quest");
 	if (!init->mlx_win)
 		return ;
 	ft_init_picture(init);
