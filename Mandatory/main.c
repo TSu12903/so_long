@@ -6,13 +6,13 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:27 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/23 16:36:20 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:26:05 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_init	*init;
 	t_point	start;

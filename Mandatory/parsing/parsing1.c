@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 14:01:18 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:26:29 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_read_file_to_array(int fd, t_init *init)
 		tmp = ft_strjoin(final, gnl_result);
 		free(final);
 		free(gnl_result);
-		final = tmp;// tmp et str1 meme adresse
+		final = tmp;
 		gnl_result = get_next_line(fd);
 	}
 	init->str = ft_split(final, '\n');

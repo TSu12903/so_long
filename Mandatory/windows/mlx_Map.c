@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:16:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 14:49:13 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:06:50 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_finish(t_init *init)
 		init->item--;
 	if (init->str[init->i][init->j] == 'E' && init->item == 0)
 	{
+		free(init->str_count);
 		ft_destroy(init);
 		exit(0);
 	}

@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:01:45 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 14:41:03 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:30:15 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,23 @@ int	ft_close(t_init *init)
 
 void	ft_load_images(t_init *init)
 {
-    init->img_wall_top = mlx_xpm_file_to_image(init->mlx, "picture/wall1.xpm", &init->img_width, &init->img_height);
-    init->img_wall_ground = mlx_xpm_file_to_image(init->mlx, "picture/ground.xpm", &init->img_width, &init->img_height);
-    init->img_wall_key = mlx_xpm_file_to_image(init->mlx, "picture/key.xpm", &init->img_width, &init->img_height);
-    init->img_wall_prisoner = mlx_xpm_file_to_image(init->mlx, "picture/prisoner.xpm", &init->img_width, &init->img_height);
-    init->img_wall_door = mlx_xpm_file_to_image(init->mlx, "picture/lock.xpm", &init->img_width, &init->img_height);
-    if (!init->img_wall_top || !init->img_wall_ground || !init->img_wall_key || 
-        !init->img_wall_prisoner || !init->img_wall_door)
-    {
+	init->img_wall_top = mlx_xpm_file_to_image(init->mlx, "picture/wall1.xpm",
+			&init->img_width, &init->img_height);
+	init->img_wall_ground = mlx_xpm_file_to_image(init->mlx,
+			"picture/ground.xpm", &init->img_width, &init->img_height);
+	init->img_wall_key = mlx_xpm_file_to_image(init->mlx, "picture/key.xpm",
+			&init->img_width, &init->img_height);
+	init->img_wall_prisoner = mlx_xpm_file_to_image(init->mlx,
+			"picture/prisoner.xpm", &init->img_width, &init->img_height);
+	init->img_wall_door = mlx_xpm_file_to_image(init->mlx,
+			"picture/lock.xpm", &init->img_width, &init->img_height);
+	if (!init->img_wall_top || !init->img_wall_ground || !init->img_wall_key
+		|| !init->img_wall_prisoner || !init->img_wall_door)
+	{
 		write(2, "Sprite Error", 12);
-        ft_destroy(init);
-        exit (1);
-    }
+		ft_destroy(init);
+		exit (1);
+	}
 }
 
 void	ft_draw_map(t_init *init)
@@ -55,20 +60,20 @@ void	ft_draw_map(t_init *init)
 	}
 }
 
-void   start_window(t_init *init)
+void	start_window(t_init *init)
 {
 	init->img_width = 40 * (init->size_map_horizontal + 1);
 	init->img_height = 40 * (init->size_map_vertical + 1);
 	init->mlx = mlx_init();
 	if (!init->mlx)
 		return ;
-	init->mlx_win = mlx_new_window(init->mlx, init->img_width, init->img_height, "Freedom Quest");
+	init->mlx_win = mlx_new_window(init->mlx, init->img_width,
+			init->img_height, "Freedom Quest");
 	if (!init->mlx_win)
 		return ;
 	ft_init_picture(init);
 	ft_load_images(init);
 	ft_draw_map(init);
 	mlx_string_put(init->mlx, init->mlx_win, 10, 10, 0xFFFFFF, "Count move :");
-	mlx_hook(init->mlx_win, 2, 1L<<0 , ft_move, init);
-	
+	mlx_hook(init->mlx_win, 2, 1L << 0, ft_move, init);
 }
