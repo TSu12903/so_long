@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 15:26:29 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/27 13:50:31 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_read_file_to_array(int fd, t_init *init)
 
 	init->k = 0;
 	final = ft_calloc(1, 1);
-	if (final == 0)
+	if (final == 0 || fd == -1)
 		return ;
 	gnl_result = get_next_line(fd);
 	while (gnl_result != 0)
@@ -54,6 +54,8 @@ void	ft_verif_empty_map(char **av, t_init *init)
 	char	*gnl_result;
 
 	init->fd = open(av[1], O_RDONLY);
+	if (init->fd == -1)
+		return ;
 	gnl_result = get_next_line(init->fd);
 	if (gnl_result == 0)
 	{
@@ -85,7 +87,7 @@ int	parsing(char **av, t_init *init, t_point *start)
 	ft_read_file_to_array(init->fd, init);
 	ft_check(init, start);
 	ft_check_items_acces(init, start);
-	if (init->size_map_vertical + 1 > 30 || init->size_map_horizontal + 1 > 60)
+	if (init->size_map_vertical + 1 > 600 || init->size_map_horizontal + 1 > 600)
 		init->error = 0;
 	if (init->error == 0)
 	{
