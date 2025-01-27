@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:55:26 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/27 13:50:31 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/27 14:24:06 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	parsing(char **av, t_init *init, t_point *start)
 	ft_verif_empty_map(av, init);
 	if (init->verif != 0 || init->error == 0)
 	{
-		write(2, "File Error \n", 12);
+		write(2, "Error \n File", 12);
 		return (0);
 	}
 	init->fd = open(av[1], O_RDONLY);
@@ -91,7 +91,7 @@ int	parsing(char **av, t_init *init, t_point *start)
 		init->error = 0;
 	if (init->error == 0)
 	{
-		write(2, "Map Error  \n", 10);
+		write(2, "Error  \n Map", 10);
 		ft_free(init->size_map_vertical, init->str);
 		return (0);
 	}

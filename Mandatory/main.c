@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:01:27 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/24 15:26:05 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/27 14:22:58 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	main(int ac, char **av)
 	t_point	start;
 
 	if (ac != 2)
+	{
+		write(2, "Error\n argv", 10);
 		return (0);
+	}
 	init = malloc(sizeof(t_init));
 	if (init == NULL)
 		return (0);
