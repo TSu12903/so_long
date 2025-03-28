@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:54:03 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/14 16:24:55 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/30 14:59:03 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= 1024)
 		return (NULL);
-	buf = ft_calloc(BUFFER_SIZE +1, sizeof(char));
+	buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (buf == NULL)
 		return (NULL);
 	all = ft_read_line(fd, buf, stat[fd]);

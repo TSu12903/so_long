@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_Map.c                                          :+:      :+:    :+:   */
+/*   mlx_Map_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:16:41 by tcybak            #+#    #+#             */
-/*   Updated: 2025/01/28 13:16:53 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/01/27 17:46:21 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,9 @@ int	ft_move(int keycode, t_init *init)
 	mlx_clear_window(init->mlx, init->mlx_win);
 	ft_draw_map(init);
 	init->str_count = ft_itoa(init->count_move);
+	mlx_string_put(init->mlx, init->mlx_win, 10, 10, 0xFFFFFF, "Count move :");
+	mlx_string_put(init->mlx, init->mlx_win, 100, 10,
+		0xFFFFFF, init->str_count);
 	free(init->str_count);
 	return (1);
 }

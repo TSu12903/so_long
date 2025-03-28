@@ -1,42 +1,54 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/08 10:12:04 by tcybak            #+#    #+#              #
-#    Updated: 2025/01/23 15:24:27 by tcybak           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+CC = cc
+CFLAGS = -Wall -Werror -Wextra -g -I$(MLXDIR) -Ilibft
+NAME = so_long
 
-SRCDIR  := ./Mandatory
-OBJDIR  := ./obj
-CC      := cc
-CFLAGS  := -Wall -Werror -Wextra -g -I$(MLXDIR) -Ilibft
-NAME    := so_long
-LIBFT   := Library/libft/libft.a
-LIB     := Library/libft
-SRC     := parsing/parsing1.c \
-           parsing/parsing_check.c \
-           parsing/parsing_item.c \
-           windows/get_window.c \
-		   windows/mlx_destroy.c \
-		   windows/mlx_Map.c \
-           utils/utils_parsing.c \
-           init/init.c \
-           main.c \
+LIBFT = Library/libft/libft.a
+LIB = Library/libft
+MLXDIR = Library/minilibx-linux
+MLX = $(MLXDIR)/libmlx_Linux.a
+LIBMLX = -L$(MLXDIR) -lmlx_Linux -lXext -lX11 -lm -lz
 
-MLXDIR  := Library/minilibx-linux
-MLX     := $(MLXDIR)/libmlx_Linux.a
-OBJ     := $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
-LIBMLX  := -L$(MLXDIR) -lmlx_Linux -lXext -lX11 -lm -lz
+SRC = Mandatory/parsing/parsing1.c \
+	  Mandatory/parsing/parsing_check.c \
+	  Mandatory/parsing/parsing_item.c \
+	  Mandatory/windows/get_window.c \
+	  Mandatory/windows/mlx_destroy.c \
+	  Mandatory/windows/mlx_Map.c \
+	  Mandatory/utils/utils_parsing.c \
+	  Mandatory/init/init.c \
+	  Mandatory/main.c
+
+SRC_BONUS = bonus/parsing/parsing1_bonus.c \
+            bonus/parsing/parsing_check_bonus.c \
+            bonus/parsing/parsing_item_bonus.c \
+            bonus/windows/get_window_bonus.c \
+            bonus/windows/mlx_destroy_bonus.c \
+            bonus/windows/mlx_Map_bonus.c \
+            bonus/utils/utils_parsing_bonus.c \
+            bonus/init_bonus/init_bonus.c \
+            bonus/main_bonus.c
+
+OBJDIR = obj
+
+OBJ = $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
+OBJ_BONUS = $(addprefix $(OBJDIR)/,$(SRC_BONUS:.c=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LIBMLX) -o $(NAME)
-	@echo ✔ GOOD
+	@echo "✔ GOOD $(NAME)"
+
+bonus: $(OBJ_BONUS) $(LIBFT) $(MLX)
+	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) $(LIBMLX) -o $(NAME)
+	@echo "✔ GOOD $(NAME)"
+
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
 
 $(LIBFT):
 	@$(MAKE) -C $(LIB) -s
@@ -44,20 +56,17 @@ $(LIBFT):
 $(MLX):
 	@$(MAKE) -C $(MLXDIR) -s
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
 	@rm -rf $(OBJDIR)
 	@$(MAKE) -C $(LIB) clean
 	@$(MAKE) -C $(MLXDIR) clean
+	@echo "Cleaned objects"
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BONUS)
 	@$(MAKE) -C $(LIB) fclean
-	@$(MAKE) -C $(MLXDIR) clean
+	@echo "Full clean done"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
